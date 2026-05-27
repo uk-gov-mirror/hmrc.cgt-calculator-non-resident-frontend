@@ -26,20 +26,21 @@
         submitButton: playComponents.submitButton
 )
 
+
 @(privateResidenceReliefForm: Form[ClaimingPrrModel])(implicit request: Request[_], messages: Messages)
 
 @title = @{
-    Messages("calc.privateResidenceRelief.title")
+    if(privateResidenceReliefForm.errors.nonEmpty) messages("site.title.error", messages("calc.privateResidenceRelief.title")) else messages("calc.privateResidenceRelief.title")
 }
 
 @layout(pageTitle = title) {
-    <h1 class="govuk-heading-l">@messages("calc.privateResidenceRelief.title")</h1>
+    @errorSummary(privateResidenceReliefForm.errors)
 
+    <h1 class="govuk-heading-l">@messages("calc.privateResidenceRelief.title")</h1>
     <p class="govuk-body" id="intro">
         @messages("calc.privateResidenceRelief.intro1")
         @messages("calc.privateResidenceRelief.qualify")
     </p>
-
     <div id="privateResidenceReliefLink">
         <p class="govuk-body">@messages("calc.privateResidenceRelief.helpText")
             <a class="govuk-link" rel="external" href="https://www.gov.uk/tax-live-abroad-sell-uk-home" target="_blank">
