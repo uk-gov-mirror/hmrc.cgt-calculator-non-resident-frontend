@@ -108,7 +108,9 @@ class ImprovementsController @Inject()(calcConnector: CalculatorConnector,
       for {
         _ <- sessionCacheService.saveFormData(KeystoreKeys.isClaimingImprovements, model)
         oldValues <- sessionCacheService.fetchAndGetFormData[ImprovementsModel](KeystoreKeys.improvements)
-        _ <- unsetImprovementsValues(oldValues)
+        _ <-
+          if (!model.isClaimingImprovements) unsetImprovementsValues(oldValues)
+          else Future.successful(())
         allAnswersModel <- answersConstructor.getNRTotalGainAnswers
         gains <- calcConnector.calculateTotalGain(allAnswersModel)
       } yield routeRequest(model, isAfterTaxStart, gains)
@@ -127,7 +129,7 @@ class ImprovementsController @Inject()(calcConnector: CalculatorConnector,
   val improvements: Action[AnyContent] = ValidateSession.async { implicit request =>
 
     def routeRequest(improvementsModel: Option[ImprovementsModel]): Future[Result] = {
-      improvementsModel match {
+        improvementsModel match {
         case Some(data) =>
           Future.successful(Ok(improvementsView(improvementsForm(false).fill(data))))
         case None =>
