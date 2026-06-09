@@ -28,8 +28,8 @@
 @(otherReliefsForm: Form[OtherReliefsModel], hasExistingReliefAmount: Boolean, chargeableGain: BigDecimal, gain: BigDecimal)(implicit request: Request[_], messages: Messages)
 
 @title = @{
-    if(otherReliefsForm.errors.nonEmpty) messages("site.title.error", messages("calc.otherReliefs.question"))
-    else                                 messages("calc.otherReliefs.question")
+    if(otherReliefsForm.errors.nonEmpty) messages("site.title.error", messages("calc.otherReliefs.heading"))
+    else                                 messages("calc.otherReliefs.heading")
 }
 
 @bigDecimalToPounds(decimal: BigDecimal) = @{

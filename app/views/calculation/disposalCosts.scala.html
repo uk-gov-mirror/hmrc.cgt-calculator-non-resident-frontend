@@ -28,7 +28,7 @@
 @(disposalCostsForm: Form[DisposalCostsModel], backLink: String)(implicit request: Request[_], messages: Messages)
 
 @title = @{
-    if(disposalCostsForm.errors.nonEmpty) messages("site.title.error", Messages("calc.disposalCosts.question")) else Messages("calc.disposalCosts.question")
+    if(disposalCostsForm.errors.nonEmpty) messages("site.title.error", Messages("calc.disposalCosts.title")) else Messages("calc.disposalCosts.title")
 }
 @layout(
     pageTitle = title
