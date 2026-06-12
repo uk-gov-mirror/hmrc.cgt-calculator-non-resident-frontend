@@ -28,7 +28,7 @@
 @(currentIncomeForm: Form[CurrentIncomeModel])(implicit request: Request[_], messages: Messages)
 
 @title = @{
-    if(currentIncomeForm.errors.nonEmpty) messages("site.title.error", Messages("calc.currentIncome.question")) else Messages("calc.currentIncome.question")
+    if(currentIncomeForm.errors.nonEmpty) messages("site.title.error", Messages("calc.currentIncome.title")) else Messages("calc.currentIncome.title")
 }
 
 @layout(
