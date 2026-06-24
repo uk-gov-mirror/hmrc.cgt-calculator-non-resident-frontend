@@ -32,8 +32,7 @@
 }
 
 @layout(
-    pageTitle = title,
-    backLinkEnabled = false
+    pageTitle = title
 ) {
 
     @errorSummary(disposalDateForm.errors.headOption.toList, errorSuffixes = Some(Map("disposalDate" -> "day")))
