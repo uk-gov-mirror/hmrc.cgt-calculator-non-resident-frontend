@@ -32,6 +32,7 @@ trait AcquisitionMarketValueForm {
   def acquisitionMarketValueForm(): Form[AcquisitionValueModel] = Form(
     mapping {
       "acquisitionMarketValue" -> text
+        .transform(stripCurrencyCharacters, stripCurrencyCharacters)
         .verifying(errorRequired, mandatoryCheck)
         .verifying(errorReal, bigDecimalCheck)
         .transform(stringToBigDecimal, bigDecimalToString)
