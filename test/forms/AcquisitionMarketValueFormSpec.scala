@@ -263,6 +263,32 @@ class AcquisitionMarketValueFormSpec extends CommonPlaySpec with WithCommonFakeA
         form.error("acquisitionMarketValue").get.message shouldBe commonMessages.WorthWhenInherited.errorReal
       }
     }
+
+    "passing in a valid map with comma in value" should {
+      val map = Map("acquisitionMarketValue" -> "150,000")
+      lazy val form = worthWhenBoughtForLessForm.bind(map)
+
+      "return a valid form" in {
+        form.errors shouldBe empty
+      }
+
+      "return the value without comma" in {
+        form.value shouldBe Some(AcquisitionValueModel(BigDecimal(150000)))
+      }
+    }
+
+    "passing in a valid map with spaces in value" should {
+      val map = Map("acquisitionMarketValue" -> "150000 ")
+      lazy val form = worthWhenBoughtForLessForm.bind(map)
+
+      "return a valid form" in {
+        form.errors shouldBe empty
+      }
+
+      "return the value without spaces" in {
+        form.value shouldBe Some(AcquisitionValueModel(BigDecimal(150000)))
+      }
+    }
   }
 
   "Acquisition Market Value form for worth when gifted form" when {
