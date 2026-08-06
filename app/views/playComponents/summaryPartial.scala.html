@@ -106,11 +106,6 @@ disposalValue: BigDecimal, acquisitionValue: BigDecimal, totalCosts: BigDecimal,
 
         <h3 class="govuk-heading-m">@Messages("calc.summaryPartial.remainingDeductions")</h3>
         <div class="govuk-summary-list">
-            <div class="govuk-summary-list-row">
-                <h2 class="govuk-heading-m govuk-visually-hidden">
-                    @Messages("calc.summaryPartial.remainingDeductions")
-                </h2>
-            </div>
             <dl class="govuk-summary-list">
                 @if(calculationResult.allowableLossesRemaining.isDefined) {
                     @summaryNumericRow("inYearLossesRemaining", Messages("calc.summaryPartial.inYearLossesRemaining", TaxYearModel.convertToSummaryFormat(taxYearModel.taxYearSupplied)), calculationResult.allowableLossesRemaining.get, hintText = false)

@@ -24,11 +24,6 @@ totalDeductions: BigDecimal,totalGain: BigDecimal, taxableGain :BigDecimal, taxT
     <h3 class="govuk-heading-m">@Messages("calc.summaryPartial.deductionsSectionHeading")</h3>
 
     <div class="govuk-summary-list">
-        <div class="govuk-summary-list-row">
-            <h2 class="govuk-heading-m govuk-visually-hidden">
-                @Messages("calc.summaryPartial.deductionsSectionHeading")
-            </h2>
-        </div>
         <dl class="govuk-summary-list">
             @if(reliefsUsed > 0) {
                 @summaryNumericRow("reliefsUsed", Messages("calc.summaryPartial.reliefsUsed"), reliefsUsed)
