@@ -36,12 +36,6 @@ percentageTotalGain: BigDecimal = 0, percentageOfGain: Int = 0)(implicit request
     <h3 class="govuk-heading-m">@if(totalGain >= 0){@Messages("calc.summaryPartial.yourTotalGain")}else{@Messages("calc.summaryPartial.yourTotalLoss")}</h3>
 
     <div class="govuk-summary-list">
-
-        <div class="govuk-summary-list-row">
-            <h2 class="govuk-heading-m govuk-visually-hidden">
-                @if(totalGain >= 0){@Messages("calc.summaryPartial.yourTotalGain")}else{@Messages("calc.summaryPartial.yourTotalLoss")}
-            </h2>
-        </div>
         <dl class="govuk-summary-list">
              @if(calculationType == TimeApportioned) {
                 <div id="percentageOfGain" class="govuk-summary-list__row">
