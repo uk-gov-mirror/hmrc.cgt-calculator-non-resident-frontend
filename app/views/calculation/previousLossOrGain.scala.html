@@ -38,10 +38,8 @@
     @errorSummary(previousLossOrGainForm.errors)
     <h1 class="govuk-heading-l">@Messages("calc.previousLossOrGain.question")</h1>
     <div class="govuk-body">
-        <span id="previousLossOrGain-hint" class="govuk-hint">
             <p>@Messages("calc.previousLossOrGain.hintOne")</p>
             <p>@Messages("calc.previousLossOrGain.hintTwo")</p>
-        </span>
     </div>
     @form(action = controllers.routes.PreviousGainOrLossController.submitPreviousGainOrLoss) {
         @govukRadios(
@@ -55,16 +53,13 @@
                 )),
                  items = Seq(
                         RadioItem(
-                        content = Text(Messages("calc.previousLossOrGain.loss")), value = Option("Loss"),
-                        attributes = Map("aria-describedby" -> "previousLossOrGain-hint") ),
+                        content = Text(Messages("calc.previousLossOrGain.loss")), value = Option("Loss")),
 
                         RadioItem(
-                        content = Text(Messages("calc.previousLossOrGain.gain")), value = Option("Gain"),
-                        attributes = Map("aria-describedby" -> "previousLossOrGain-hint") ),
+                        content = Text(Messages("calc.previousLossOrGain.gain")), value = Option("Gain")),
 
                         RadioItem(
-                        content = Text(Messages("calc.previousLossOrGain.neither")), value = Option("Neither"),
-                        attributes = Map("aria-describedby" -> "previousLossOrGain-hint") )
+                        content = Text(Messages("calc.previousLossOrGain.neither")), value = Option("Neither"))
                 ),
                 formGroup = FormGroup(classes = Some("govuk-!-margin-top-6"))
             ).withFormField(previousLossOrGainForm("previousLossOrGain"))
